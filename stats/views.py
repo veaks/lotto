@@ -7,7 +7,7 @@ from stats.models import Draws
 def list_draws(request):
     qs = Draws.objects.all()
     context = {'list_draws': qs}
-    return render(request, 'stats/list_draws.html', context)
+    return render(request, 'list_draws.html', context)
 
 def overall_stat(request):
     list_numbers1 = {}
@@ -27,7 +27,7 @@ def overall_stat(request):
             if item.n5==i or item.n6==i or item.n7==i or item.n8==i:
                 list_numbers2[i] += 1
     context = {'list_numbers1': list_numbers1, 'list_numbers2': list_numbers2, 'latest': latest}
-    return render(request, 'stats/overall_stat.html', context)
+    return render(request, 'overall_stat.html', context)
 
 def update(request):
     numbers = []
@@ -58,4 +58,4 @@ def update(request):
             draw.n7 = int(value[12:14])
             draw.n8 = int(value[14:])
             draw.save()
-    return render(request, 'stats/update.html')
+    return render(request, 'update.html')
