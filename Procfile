@@ -1,0 +1,1 @@
+web: gunicorn lotto.wsgi --log-file -
