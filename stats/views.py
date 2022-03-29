@@ -59,3 +59,50 @@ def update(request):
             draw.n8 = int(value[14:])
             draw.save()
     return render(request, 'update.html')
+
+
+def latest_chart(request):
+    list_numbers1 = {}
+    for i in range(1, 21):
+        list_numbers1[i]=0
+    list_numbers2 = {}
+    for i in range(1, 21):
+        list_numbers2[i]=0
+    qs = Draws.objects.all()
+    current = int(Draws.objects.first().number)
+    latest = Draws.objects.filter(number__gt=current-100)
+    for i in range(1, 21):
+        for item in latest:
+            if item.n1==i or item.n2==i or item.n3==i or item.n4==i:
+                list_numbers1[i] += 1
+            if item.n5==i or item.n6==i or item.n7==i or item.n8==i:
+                list_numbers2[i] += 1
+    context = {'list_numbers1': list_numbers1, 'list_numbers2': list_numbers2}
+    return render(request, 'latest_chart.html', context)
+
+def latest_chart_js(request):
+    list_numbers1 = {}
+    for i in range(1, 21):
+        list_numbers1[i]=0
+    list_numbers2 = {}
+    for i in range(1, 21):
+        list_numbers2[i]=0
+    qs = Draws.objects.all()
+    current = int(Draws.objects.first().number)
+    latest = Draws.objects.filter(number__gt=current-100)
+    for i in range(1, 21):
+        for item in latest:
+            if item.n1==i or item.n2==i or item.n3==i or item.n4==i:
+                list_numbers1[i] += 1
+            if item.n5==i or item.n6==i or item.n7==i or item.n8==i:
+                list_numbers2[i] += 1
+    return render(request, 'latest_chart_js.html',
+                  {
+                      'labels': list(list_numbers1.keys()),
+                      'data': list(list_numbers1.values()),
+                      'colors': ["#FF4136" for i in range(20)]
+                  }
+                  )
+
+
+

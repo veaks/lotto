@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Последние 100 тиражей</title>
+</head>
+<body>
+<table border="1">
+{% for key, value in list_numbers1.items %}
+     <tr><td>{{key}}</td><td>{{value}}</td></tr>
+{% endfor %}
+ {% for key, value in list_numbers2.items %}
+     <tr><td>{{key}}</td><td>{{value}}</td></tr>
+{% endfor %}
+</table>
+
+
+</body>
+</html>
