@@ -5,43 +5,64 @@
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    <title>Geschlechtsverteilung Patientendaten </title>
+    <title>Графики</title>
 </head>
 <body>
     <div class="container">
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart1"></canvas>
     </div>
 
     <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
+        var ctx = document.getElementById('myChart1').getContext('2d');
+        var myChart1 = new Chart(ctx, {
             type: 'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
 
             data: {
-                labels: {{labels|safe}},
+                labels: {{labels1|safe}},
                 datasets: [{
-                    data: {{data|safe}},
-                    backgroundColor: {{colors|safe}}
+                    data: {{data1|safe}},
+                    backgroundColor: {{colors1|safe}}
                 }]
             },
             options: {
                 title: {
                     display: true,
-                    text: 'Geschlechtsverteilung Patientendaten',
+                    text: '1',
                 },
-                legend: {
-                    disblay: true,
-                    position: 'right',
-                    labels: {
-                        fontColor: '#000'
-                    }
-                }
+
 
             }
 
 
         });
+       </script>
+    <div class="container">
+        <canvas id="myChart2"></canvas>
+    </div>
 
+    <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',// bar, horizontalBar, pie, line, doughnut, radar, polarArea
+
+            data: {
+                labels: {{labels2|safe}},
+                datasets: [{
+                    data: {{data2|safe}},
+                    backgroundColor: {{colors2|safe}}
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '2',
+                },
+
+
+            }
+
+
+        });
     </script>
 </body>
 </html>

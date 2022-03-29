@@ -98,9 +98,12 @@ def latest_chart_js(request):
                 list_numbers2[i] += 1
     return render(request, 'latest_chart_js.html',
                   {
-                      'labels': list(list_numbers1.keys()),
-                      'data': list(list_numbers1.values()),
-                      'colors': ["#FF4136" for i in range(20)]
+                      'labels1': list(list_numbers1.keys()),
+                      'data1': list(list_numbers1.values()),
+                      'colors1': ["#FF4136" for i in range(20)],
+                      'labels2': list(list_numbers2.keys()),
+                      'data2': list(list_numbers2.values()),
+                      'colors2': ["#00FF00" for i in range(20)],
                   }
                   )
 
